@@ -26,19 +26,20 @@ export function useTodos() {
   const [taskText, setTaskText] = useState("");
   const [tasks, setTasks] = useState<Task[]>([]);
 
-  useEffect(() => {
-    const loadTasks = async () => {
-      try {
-        const storedTasks = await AsyncStorage.getItem(STORAGE_KEY);
-        if (storedTasks) {
-          setTasks(JSON.parse(storedTasks));
-        } else {
-          setTasks(defaultTasks);
-        }
-      } catch (e) {
-        console.error("Failed to load tasks", e);
+  const loadTasks = async () => {
+    try {
+      const storedTasks = await AsyncStorage.getItem(STORAGE_KEY);
+      if (storedTasks) {
+        setTasks(JSON.parse(storedTasks));
+      } else {
+        setTasks(defaultTasks);
       }
-    };
+    } catch (e) {
+      console.error("Failed to load tasks", e);
+    }
+  };
+
+  useEffect(() => {
     loadTasks();
   }, []);
 
