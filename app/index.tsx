@@ -74,6 +74,7 @@ const styles = StyleSheet.create({
     maxWidth: 500,
     alignSelf: "center",
     maxHeight: "100%",
+    padding: 20,
   },
   inputContainer: {
     flexDirection: "row",
